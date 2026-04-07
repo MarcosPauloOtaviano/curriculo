@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo — Marcos Paulo Carvalho Otaviano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0f1e;
+            --paper: #f4f7f6;
+            --cream: #e0e6e9;
+            --tech-accent: #1a73e8;
+            --tech-accent-light: #64a1f4;
+            --tech-accent-pale: #e8f0fe;
+            --deep-tech: #102a43;
+            --slate: #486581;
+            --muted: #829ab1;
+            --white: #ffffff;
+            --rule: rgba(26,115,232,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        .top-band { background: var(--deep-tech); height: 6px; width: 100%; }
+        .gold-band { background: linear-gradient(90deg, var(--tech-accent) 0%, var(--tech-accent-light) 50%, var(--tech-accent) 100%); height: 2px; width: 100%; }
+
+        .page {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0;
+            background: var(--white);
+            box-shadow: 0 8px 60px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            background: var(--deep-tech);
+            padding: 56px 64px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 360px; height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(26,115,232,0.12) 0%, transparent 70%);
+        }
+
+        .hero::after {
+            content: 'M';
+            position: absolute;
+            right: 64px; top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 240px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-wrap {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--tech-accent), var(--tech-accent-light));
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 1;
+            background: var(--slate);
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hero-tag {
+            background: rgba(26,115,232,0.12);
+            border: 1px solid rgba(26,115,232,0.3);
+            color: var(--tech-accent-light);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 4px 12px;
+            border-radius: 3px;
+        }
+
+        .hero-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.88rem;
+        }
+
+        /* ESTILO PARA OS LINKS INTERATIVOS */
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--tech-accent-light);
+            text-decoration: underline;
+        }
+
+        .contact-item .icon {
+            color: var(--tech-accent-light);
+            font-size: 1rem;
+        }
+
+        .body-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+        }
+
+        .main-col {
+            padding: 52px 56px 60px;
+            border-right: 1px solid var(--cream);
+        }
+
+        .side-col {
+            padding: 52px 40px 60px;
+            background: var(--paper);
+        }
+
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .sec-head .line-left {
+            width: 28px;
+            height: 2px;
+            background: var(--tech-accent);
+            flex-shrink: 0;
+        }
+
+        .sec-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep-tech);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .sec-head .line-right {
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .about-text {
+            font-size: 0.975rem;
+            color: var(--slate);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .about-text strong {
+            color: var(--deep-tech);
+            font-weight: 600;
+        }
+
+        .section-block {
+            margin-bottom: 44px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 22px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 8px; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--tech-accent), transparent);
+        }
+
+        .job-entry {
+            position: relative;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .job-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .job-entry::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 7px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--tech-accent);
+            box-shadow: 0 0 0 3px rgba(26,115,232,0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .job-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--deep-tech);
+        }
+
+        .job-period {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--tech-accent);
+            background: var(--tech-accent-pale);
+            padding: 3px 10px;
+            border-radius: 3px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .job-company {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .job-list li {
+            font-size: 0.92rem;
+            color: var(--slate);
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .job-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--tech-accent);
+            font-weight: 700;
+        }
+
+        .edu-entry {
+            background: var(--paper);
+            border-left: 3px solid var(--tech-accent);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 16px;
+        }
+
+        .edu-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep-tech);
+            margin-bottom: 4px;
+        }
+
+        .edu-status {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--tech-accent);
+            background: var(--tech-accent-pale);
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+
+        .edu-status.paused {
+            background: var(--cream);
+            color: var(--slate);
+        }
+
+        .edu-status.completed {
+            background: rgba(26,115,232,0.1);
+            color: var(--tech-accent);
+        }
+
+        .edu-desc {
+            font-size: 0.9rem;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        .skill-item {
+            margin-bottom: 16px;
+        }
+
+        .skill-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--deep-tech);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar-bg {
+            height: 4px;
+            background: var(--cream);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--tech-accent), var(--tech-accent-light));
+            border-radius: 2px;
+            animation: fillBar 1.2s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes fillBar {
+            from { width: 0 !important; }
+        }
+
+        .comp-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .comp-tag {
+            font-size: 0.85rem;
+            color: var(--slate);
+            padding: 9px 14px;
+            background: var(--white);
+            border-radius: 5px;
+            border: 1px solid var(--cream);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .comp-tag:hover {
+            border-color: var(--tech-accent);
+            color: var(--deep-tech);
+        }
+
+        .comp-tag .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--tech-accent);
+            flex-shrink: 0;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--cream);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 8px;
+        }
+
+        .info-card-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--tech-accent);
+            margin-bottom: 5px;
+        }
+
+        .info-card-val {
+            font-size: 0.93rem;
+            color: var(--deep-tech);
+            font-weight: 500;
+        }
+
+        .page-footer {
+            background: var(--deep-tech);
+            padding: 18px 64px;
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo agora que temos apenas um elemento */
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.25s; }
+        .fade-in:nth-child(3) { animation-delay: 0.4s; }
+        .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 780px) {
+            .hero { padding: 40px 28px 36px; }
+            .hero-name { font-size: 2.1rem; }
+            .hero::after { display: none; }
+            .body-grid { grid-template-columns: 1fr; }
+            .main-col { padding: 36px 28px; border-right: none; border-bottom: 1px solid var(--cream); }
+            .side-col { padding: 36px 28px; }
+            .page-footer { flex-direction: column; gap: 6px; text-align: center; padding: 16px 28px; }
+        }
+
+        @media print {
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page { box-shadow: none; max-width: 100%; }
+            .fade-in, .skill-bar-fill { animation: none !important; opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="top-band"></div>
+    <div class="gold-band"></div>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="avatar-wrap">
+                <img 
+                    src="eu.jpg" 
+                    alt="Marcos Paulo Carvalho Otaviano" 
+                    class="avatar"
+                    onerror="this.src='https://via.placeholder.com/120/102a43/1a73e8?text=M'"
+                >
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-name">Marcos Paulo Carvalho<br>Otaviano</h1>
+                <div class="hero-tags">
+                    <span class="hero-tag">Análise de Sistemas</span>
+                    <span class="hero-tag">Levantamento de Requisitos</span>
+                    <span class="hero-tag">Desenvolvimento Web & Python</span>
+                    <span class="hero-tag">Sistemas ERP/WMS</span>
+                </div>
+                <div class="hero-contacts">
+                    <span class="contact-item">
+                        <span class="icon">📞</span>
+                        <a href="https://wa.me/5535988440656" target="_blank">(35) 98844-0656</a>
+                    </span>
+                    <span class="contact-item">
+                        <span class="icon">✉️</span>
+                        <a href="mailto:Markinhosp45@gmail.com">Markinhosp45@gmail.com</a>
+                    </span>
+                    <span class="contact-item">
+                        <span class="icon">📍</span> Guaxupé, MG
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="body-grid">
+        <main class="main-col">
+            <div class="section-block fade-in">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Perfil Profissional</h2>
+                    <div class="line-right"></div>
+                </div>
+                <p class="about-text">
+                    Profissional com sólida base tecnológica e vivência em operações de larga escala, focado na <strong>intersecção entre regras de negócio e soluções de software</strong>. Especialista em traduzir necessidades operacionais em requisitos técnicos, possuo conhecimento avançado em <strong>arquitetura de sistemas ERP/WMS, manipulação de dados com Python/Pandas e desenvolvimento web</strong>. Destaco-me pela capacidade analítica na resolução de divergências sistêmicas críticas e pela proatividade no desenvolvimento de automações que otimizam fluxos operacionais, garantindo integridade de dados *end-to-end*.
+                </p>
+            </div>
+
+            <div class="section-block fade-in">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Projetos de Desenvolvimento & Portfólio</h2>
+                    <div class="line-right"></div>
+                </div>
+                <div class="timeline">
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Controle de Fluxo de Caixa (Análise & Backend)</span>
+                            <span class="job-period">Python / SQLite / Pandas</span>
+                        </div>
+                        <div class="job-company">Sistema Desktop (Arquitetura em Camadas)</div>
+                        <ul class="job-list">
+                            <li>Modelagem e desenvolvimento de software independente para gestão financeira, com validação rigorosa de dados.</li>
+                            <li><strong>Engenharia de Software:</strong> Arquitetura estruturada separando persistência, regras de negócio e interface (UI).</li>
+                            <li><strong>Análise de Dados:</strong> Implementação de módulo com Pandas para processamento de extratos e geração automatizada de relatórios profissionais e gráficos no Excel.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">E-commerce de Salgados (Fullstack & Integração)</span>
+                            <span class="job-period">JS Vanilla / HTML5 / CSS3</span>
+                        </div>
+                        <div class="job-company">Aplicação Web Mobile-First</div>
+                        <ul class="job-list">
+                            <li>Desenvolvimento de lógica complexa para catálogo dinâmico, variações de itens e carrinho de compras em tempo real.</li>
+                            <li>Modelagem de regras de negócio para desconto progressivo automatizado por volume.</li>
+                            <li><strong>Integração de Pagamento:</strong> Geração manual do payload Pix no padrão EMV-BR, incluindo cálculo de CRC16 e renderização dinâmica de QR Code do zero.</li>
+                            <li>Automação do fluxo de fechamento com integração direta via WhatsApp API.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Digitalização de Inventário e Rastreabilidade</span>
+                            <span class="job-period">No-code (Wix) / QR Code</span>
+                        </div>
+                        <div class="job-company">Projeto Operacional — Tiro de Guerra</div>
+                        <ul class="job-list">
+                            <li>Mapeamento e estruturação digital de todo o estoque físico, categorizando materiais de diferentes naturezas (bélico, suprimentos de limpeza e doações).</li>
+                            <li>Implementação de um sistema prático de rastreabilidade, vinculando o acervo físico a um catálogo digital através de etiquetas com QR Code.</li>
+                            <li>Otimização do tempo de identificação e auditoria de materiais, demonstrando forte visão sistêmica e uso de tecnologia (solução No-code) para resolução de problemas operacionais reais.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Trufas Maxwel — Catálogo Web & Conversão</span>
+                            <span class="job-period">HTML / CSS / UX</span>
+                        </div>
+                        <div class="job-company">Plataforma de Vendas Diretas</div>
+                        <ul class="job-list">
+                            <li>Desenvolvimento de site focado em conversão e experiência do usuário, estruturando promoções diárias e categorias de produtos (tradicionais, especiais e cones).</li>
+                            <li>Implementação de carrinho de compras funcional em interface estática, projetado para facilitar a navegação sem a necessidade de infraestrutura de backend complexa.</li>
+                            <li>Integração do funil de vendas diretamente com o WhatsApp, simplificando a jornada de compra do cliente e agilizando o fechamento de pedidos para o lojista.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-block fade-in">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Experiência Profissional</h2>
+                    <div class="line-right"></div>
+                </div>
+                <div class="timeline">
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Assistente de Logística (Foco em Sistemas) / Ajudante</span>
+                            <span class="job-period">Jan 2024 – Atual</span>
+                        </div>
+                        <div class="job-company">Cooxupé</div>
+                        <ul class="job-list">
+                            <li><strong>Análise de Sistemas Corporativos:</strong> Operação avançada de sistemas ERP e WMS para monitoramento e controle *end-to-end* do fluxo.</li>
+                            <li><strong>Resolução de Divergências Críticas:</strong> Análise e correção de inconsistências de estoque (físico vs. sistêmico), garantindo alta acuracidade de dados.</li>
+                            <li><strong>Otimização de Processos:</strong> Uso de relatórios WMS para modelagem de localização de produtos e redução de tempos operacionais; suporte técnico em coletores de dados.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Ajudante (Roteirização e Estoque)</span>
+                            <span class="job-period">Mar 2023 – Dez 2023</span>
+                        </div>
+                        <div class="job-company">Paulineris</div>
+                        <ul class="job-list">
+                            <li>Apoio na lógica de roteirização e consolidação de cargas para otimização de entregas.</li>
+                            <li>Suporte no controle de fluxo sistêmico de entrada e saída no armazém.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Auxiliar Administrativo (Jovem Aprendiz)</span>
+                            <span class="job-period">Nov 2021 – Mar 2023</span>
+                        </div>
+                        <div class="job-company">JF Pasqua</div>
+                        <ul class="job-list">
+                            <li>Gestão rigorosa de documentação física e digital e organização administrativa legal.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <span class="job-title">Auxiliar de Escritório (Rotinas & Excel)</span>
+                            <span class="job-period">Nov 2019 – Dez 2020</span>
+                        </div>
+                        <div class="job-company">Tiro de Guerra</div>
+                        <ul class="job-list">
+                            <li>Desenvolvimento de planilhas de controle e documentos utilizando ferramentas de escritório.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-block fade-in">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Formação Acadêmica</h2>
+                    <div class="line-right"></div>
+                </div>
+                <div class="edu-entry">
+                    <div class="edu-title">Análise e Desenvolvimento de Sistemas (ADS)</div>
+                    <span class="edu-status">Em andamento</span>
+                    <p class="edu-desc">UFBRA — Foco em engenharia de requisitos, lógica, banco de dados e arquitetura de software.</p>
+                </div>
+                <div class="edu-entry">
+                    <div class="edu-title">Ciências da Computação</div>
+                    <span class="edu-status paused">Trancado (4º Período)</span>
+                    <p class="edu-desc">Início em 2019. Base acadêmica em estrutura de dados, algoritmos e teoria da computação.</p>
+                </div>
+                <div class="edu-entry">
+                    <div class="edu-title">Técnico em Informática integrado ao Ensino Médio</div>
+                    <span class="edu-status completed">Concluído (Ago/2017 – Dez/2018)</span>
+                    <p class="edu-desc">E. E. Dr. Benedito Leite Ribeiro — Fundamentos de hardware, redes, sistemas operacionais e base introdutória de lógica de programação.</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="side-col">
+            <div class="section-block">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Dados Pessoais</h2>
+                    <div class="line-right" style="background: rgba(26,115,232,0.15);"></div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">Nascimento / Idade</div>
+                    <div class="info-card-val">22/06/2000 · 25 anos</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">Habilitação</div>
+                    <div class="info-card-val">Categoria B</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">Disponibilidade</div>
+                    <div class="info-card-val">Imediata / A combinar</div>
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Habilidades Técnicas</h2>
+                    <div class="line-right" style="background: rgba(26,115,232,0.15);"></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Análise de Sistemas (ERP/WMS)</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Lógica & Modelagem de Processos</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Dev Web (HTML/CSS/JS Vanilla)</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Python & Manipulação de Dados (Pandas)</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Banco de Dados (SQLite)</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Pacote Office Avançado</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Domínio Logístico (Regra de Negócio)</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%"></div></div>
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Competências</h2>
+                    <div class="line-right" style="background: rgba(26,115,232,0.15);"></div>
+                </div>
+                <div class="comp-grid">
+                    <div class="comp-tag"><span class="dot"></span> Levantamento de Requisitos</div>
+                    <div class="comp-tag"><span class="dot"></span> Resolução de Divergências Críticas</div>
+                    <div class="comp-tag"><span class="dot"></span> Visão End-to-End</div>
+                    <div class="comp-tag"><span class="dot"></span> Automação de Processos Comerciais</div>
+                    <div class="comp-tag"><span class="dot"></span> Acuracidade de Dados sistêmicos</div>
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="sec-head">
+                    <div class="line-left"></div>
+                    <h2>Idiomas</h2>
+                    <div class="line-right" style="background: rgba(26,115,232,0.15);"></div>
+                </div>
+                <div class="info-card">
+                    <div class="lang-row">
+                        <div class="lang-name">Inglês</div>
+                    </div>
+                    <span class="lang-level">Leitura Técnica / Básico<br><small>(Cursou Wizard - 2017 a 2018)</small></span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="gold-band"></div>
+    <footer class="page-footer">
+        <span class="footer-text">Marcos Paulo Carvalho Otaviano · Currículo Profissional · 2026</span>
+    </footer>
+</div>
+</body>
+</html>
